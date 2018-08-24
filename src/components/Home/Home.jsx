@@ -1,16 +1,23 @@
+// @flow
+
 import React from 'react'
-import Helmet from 'react-helmet'
 
-import styles from './Home.scss'
+import Header from './Header/Header'
+import IconsGrid from './IconsGrid/IconsGrid'
+import Showcases from './Showcases/Showcases'
 
-class Home extends React.Component {
+type Props = {
+}
+
+class Home extends React.Component<Props> {
+
   render() {
     return (
-      <div className={styles.home}>
-        <Helmet
-          title="Welcome to our Homepage"
-        />
-        <h1>Homepage</h1>
+      <div>
+        <Header />
+        <IconsGrid />
+        <Showcases />
+          
       </div>
     )
   }

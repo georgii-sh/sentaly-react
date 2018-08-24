@@ -1,0 +1,25 @@
+.item {
+ 
+  text-align: center;
+
+  @media (min-width: 768px) {
+    max-width: 20rem;
+  }
+
+  &__icon {
+    height: 7rem;
+    
+    i {
+      font-size: 4.5rem;
+      color: $primary;
+    }
+  }
+  
+  &:hover {
+    &__icon {
+      i {
+        font-size: 5rem;
+      }
+    }
+  }
+}
