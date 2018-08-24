@@ -15,7 +15,7 @@ class IconsGrid extends React.PureComponent<Props> {
 
   render() {
     return (
-      <section className={[styles.iconsGrid].join(' ')}>
+      <section className={[styles.iconsGrid, bs4['bg-light']].join(' ')}>
         <div className={bs4.container}>
           <div className={styles.iconsGrid__title}>
             <div className={[bs4['col-md-10'], bs4['col-lg-8'], bs4['col-xl-7'], bs4['mx-auto']].join(' ')}>

@@ -5,6 +5,7 @@ import Helmet from 'react-helmet'
 import Header from './Header/Header'
 import Footer from './Footer/Footer'
 import Home from './Home/Home'
+import Contacts from './Contacts/Contacts'
 
 class App extends React.Component {
   constructor(props) {
@@ -33,6 +34,7 @@ class App extends React.Component {
         <Header title="Sentaly technologies" />
         <Switch>
           <Route exact path='/' component={Home} />
+          <Route exact path='/contacts' component={Contacts} />
         </Switch>
         <Footer />
       </div>
