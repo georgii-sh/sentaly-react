@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "engines": {
+    "node": "8.9.4"
+  },
   "scripts": {
     "dev": "cross-env NODE_ENV=development node dev",
     "build": "cross-env NODE_ENV=production webpack --config webpack.production.config.js --progress --profile",
@@ -17,7 +20,8 @@
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-helmet": "^5.2.0",
-    "react-router-dom": "^4.3.1"
+    "react-router-dom": "^4.3.1",
+    "express": "^4.16.3"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -31,7 +35,6 @@
     "css-loader": "^1.0.0",
     "eslint": "^5.4.0",
     "eslint-plugin-flowtype": "^2.50.0",
-    "express": "^4.16.3",
     "mini-css-extract-plugin": "^0.4.2",
     "node-sass": "^4.9.3",
     "optimize-css-assets-webpack-plugin": "^5.0.0",

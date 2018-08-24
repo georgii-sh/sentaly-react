@@ -12,4 +12,4 @@ app.use('/client.js', express.static(path.join(__dirname, './public/client.js'),
 
 app.use(ServerRenderer(Stats))
 
-app.listen(3000)
+app.listen(process.env.PORT)
