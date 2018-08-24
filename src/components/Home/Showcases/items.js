@@ -6,19 +6,19 @@ export default [
   },
   {
     isImageFirst: true,
-    image: "/assets/images/bg-showcase-1.jpg",
+    image: "/assets/images/bg-showcase-3.jpg",
     title:  "Web Services",
     text: "As a core technology team, we excel in creating web services, APIs and websites."
   },
   {
-    image: "/assets/images/bg-showcase-3.jpg",
-    title: "IT Consultancy",
-    text: "With over 10 years’ experience in IT consultancy, we can develop and tailor a specific solution  for your needs."
+    image: "/assets/images/bg-showcase-1.jpg",
+    title: "Mobile App Development",
+    text: "Having launched hundreds of mobile apps, this is our core business today. We create apps that meet user’s increasing expectations."
   },
   {
     isImageFirst: true,
-    image: "/assets/images/bg-showcase-1.jpg",
-    title :  "Mobile App Development",
-    text: "Having launched hundreds of mobile apps, this is our core business today. We create apps that meet user’s increasing expectations."  
+    image: "/assets/images/bg-showcase-4.jpg",
+    title: "IT Consultancy",
+    text: "With over 10 years’ experience in IT consultancy, we can develop and tailor a specific solution  for your needs."
   }
 ]

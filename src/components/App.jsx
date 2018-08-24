@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import Helmet from 'react-helmet'
 
 import Header from './Header/Header'
+import Footer from './Footer/Footer'
 import Home from './Home/Home'
 
 class App extends React.Component {
@@ -22,7 +23,7 @@ class App extends React.Component {
             { name: "viewport", content: "width=device-width, initial-scale=1" },
           ]}
           link={[
-            { rel: 'stylesheet', type: 'text/css', href: 'https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic' },
+            { rel: 'stylesheet', type: 'text/css', href: 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' },
             { rel: 'stylesheet', type: 'text/css', href: '/assets/styles/normalize.css' },
             { rel: 'stylesheet', type: 'text/css', href: '/assets/styles/font-awesome.min.css' },
             { rel: 'stylesheet', type: 'text/css', href: '/assets/styles/simple-line-icons.css' },
@@ -33,6 +34,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/' component={Home} />
         </Switch>
+        <Footer />
       </div>
     )
   }

@@ -16,3 +16,4 @@ _site/
 .env
 yarn-error.log
 .openode
+sslcert/

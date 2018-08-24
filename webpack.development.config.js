@@ -7,9 +7,9 @@ module.exports = [
     target: 'web',
     entry: './src/client.jsx',
     output: {
-      path: path.join(__dirname, 'static'),
+      path: path.join(__dirname, 'public'),
       filename: 'client.js',
-      publicPath: '/static/',
+      publicPath: '/public/',
     },
     resolve: {
       extensions: ['.js', '.jsx']
@@ -61,10 +61,10 @@ module.exports = [
     target: 'node',
     entry: './src/server.jsx',
     output: {
-      path: path.join(__dirname, 'static'),
+      path: path.join(__dirname, 'public'),
       filename: 'server.js',
       libraryTarget: 'commonjs2',
-      publicPath: '/static/',
+      publicPath: '/public/',
     },
     devtool: 'source-map',
     resolve: {

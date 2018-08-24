@@ -17,7 +17,7 @@ class Showcases extends React.PureComponent<Props> {
     return (
       <section className={styles.showcase}>
         <div className={[bs4['container-fluid'], bs4['p-0']].join(' ')}>
-          {items.map(item => <Showcase {...item} />)}
+          {items.map(item => <Showcase key={item.title} {...item} />)}
         </div>
       </section>
     )
