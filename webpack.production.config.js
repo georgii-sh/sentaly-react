@@ -3,7 +3,9 @@ const webpack = require('webpack')
 const WebpackCleanupPlugin = require('webpack-cleanup-plugin')
 const StatsPlugin = require('stats-webpack-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const CompressionPlugin = require('compression-webpack-plugin')
 
 module.exports = [
 	{
@@ -66,6 +68,13 @@ module.exports = [
 				}
 			}),
 			new webpack.optimize.OccurrenceOrderPlugin(),
+			new CompressionPlugin({
+				asset: '[path].gz[query]',
+				algorithm: 'gzip',
+				test: /\.js$|\.css$|\.scss$|\.html$|\.eot?.+$|\.ttf?.+$|\.woff?.+$|\.svg?.+$/,
+				threshold: 10240,
+				minRatio: 0.8
+			}),
 		]
 	},
 	{
@@ -126,8 +135,9 @@ module.exports = [
 			],
 		},
 		plugins: [
-			new MiniCssExtractPlugin({
-				filename: "assets/[name].css",
+			new CopyWebpackPlugin([{ from: 'assets', to: 'assets' }]),
+		  new MiniCssExtractPlugin({
+				filename: "assets/styles/[name].css",
 				chunkFilename: "[id].css"
 			}),
 			new StatsPlugin('stats.json', {
@@ -135,6 +145,13 @@ module.exports = [
 				modules: true,
 				chunks: true,
 				exclude: [/node_modules[\\\/]react/],
+			}),
+			new CompressionPlugin({
+				asset: '[path].gz[query]',
+				algorithm: 'gzip',
+				test: /\.js$|\.css$|\.scss$|\.html$|\.eot?.+$|\.ttf?.+$|\.woff?.+$|\.svg?.+$/,
+				threshold: 10240,
+				minRatio: 0.8
 			}),
 		]
 	}
