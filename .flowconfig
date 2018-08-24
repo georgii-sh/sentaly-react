@@ -1,0 +1,16 @@
+[ignore]
+<PROJECT_ROOT>/node_modules/*
+<PROJECT_ROOT>/public/*
+<PROJECT_ROOT>/dist/*
+<PROJECT_ROOT>/coverage/*
+
+[include]
+
+[libs]
+
+[lints]
+
+[options]
+module.file_ext=.scss
+module.name_mapper.extension='scss' -> 'empty/object'
+[strict]
