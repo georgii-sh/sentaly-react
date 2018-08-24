@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react'
+import { Helmet } from 'react-helmet'
 
 import Header from './Header/Header'
 import IconsGrid from './IconsGrid/IconsGrid'
@@ -14,6 +15,7 @@ class Home extends React.Component<Props> {
   render() {
     return (
       <div>
+        <Helmet title="About" />
         <Header />
         <IconsGrid />
         <Showcases />

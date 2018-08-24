@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react'
+import { Helmet } from 'react-helmet'
 
 import { bs4, Input } from '../shared'
 import styles from './Contacts.scss'
@@ -48,6 +49,7 @@ class Contacts extends React.Component<Props, State> {
   render() {
     return (
       <div className={[bs4.container, styles.contacts].join(' ')}>
+        <Helmet title="Contact Us" />
         <h1>Let’s Talk!</h1>
         <div className={[bs4['text-muted'], bs4['col-md-10'], bs4['col-lg-8'], bs4['col-xl-7'], bs4['mx-auto']].join(' ')}>
           Have a project idea or general inquiry? Please don’t hesitate to ask us - we will
