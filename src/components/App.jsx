@@ -32,7 +32,6 @@ class App extends React.Component<Props> {
             { rel: 'icon', type: 'image/png', href: '/assets/icons/favicon-16x16.png', sizes: '16x16' },
             { rel: 'stylesheet', type: 'text/css', href: 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600' },
             { rel: 'stylesheet', type: 'text/css', href: '/assets/styles/normalize.css' },
-            { rel: 'stylesheet', type: 'text/css', href: '/assets/styles/font-awesome.min.css' },
             { rel: 'stylesheet', type: 'text/css', href: '/assets/styles/simple-line-icons.css' },
             { rel: 'stylesheet', type: 'text/css', href: '/assets/styles/main.css' }
           ]}

@@ -23,9 +23,6 @@ export default function serverRenderer({ clientStats, serverStats }) {
     )
     const helmet = Helmet.renderStatic()
     const preloadedState = store.getState()
-
-    console.log('rendering', req.url)
-
     res.set('Cache-Control', 'public, max-age=600, s-maxage=1200')
     res.status(200).send(Template({
       markup,

@@ -163,8 +163,7 @@ class Contacts extends React.Component<Props, State> {
               onClick={this.submit}
               disabled={this.props.isLoading || this.isSubmitDisabled()}
             >
-              Submit
-              {this.props.isLoading && <i className="fa fa-circle-o-notch fa-spin"></i>}
+              {this.props.isLoading ? 'Submiting...' : 'Submit'}
             </button>
           </div>
           
