@@ -1,13 +1,17 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Helmet from 'react-helmet'
+import { renderRoutes } from 'react-router-config'
 
+import routes from './routes'
 import Header from './Header/Header'
 import Footer from './Footer/Footer'
-import Home from './Home/Home'
-import Contacts from './Contacts/Contacts'
+import { Modal } from './shared'
 
-class App extends React.Component {
+type Props = {
+}
+
+class App extends React.Component<Props> {
   constructor(props) {
     super(props)
   }
@@ -24,6 +28,8 @@ class App extends React.Component {
             { name: "viewport", content: "width=device-width, initial-scale=1" },
           ]}
           link={[
+            { rel: 'icon', type: 'image/png', href: '/assets/icons/favicon-32x32.png', sizes: '32x32' },
+            { rel: 'icon', type: 'image/png', href: '/assets/icons/favicon-16x16.png', sizes: '16x16' },
             { rel: 'stylesheet', type: 'text/css', href: 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600' },
             { rel: 'stylesheet', type: 'text/css', href: '/assets/styles/normalize.css' },
             { rel: 'stylesheet', type: 'text/css', href: '/assets/styles/font-awesome.min.css' },
@@ -32,10 +38,8 @@ class App extends React.Component {
           ]}
         />
         <Header title="Sentaly technologies" />
-        <Switch>
-          <Route exact path='/' component={Home} />
-          <Route exact path='/contacts' component={Contacts} />
-        </Switch>
+        <Modal />
+        {renderRoutes(routes)}
         <Footer />
       </div>
     )

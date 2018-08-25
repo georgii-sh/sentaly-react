@@ -25,8 +25,8 @@ class IconsGrid extends React.PureComponent<Props> {
           <div className={bs4.row}>
             {items.map(item => {
               return (
-                <div className={bs4['col-lg-4']}>
-                  <Icon key={item.title} {...item} />
+                <div key={item.title} className={bs4['col-lg-4']}>
+                  <Icon {...item} />
                 </div>
               )
             })}

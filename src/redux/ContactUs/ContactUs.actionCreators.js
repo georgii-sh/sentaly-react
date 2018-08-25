@@ -17,7 +17,7 @@ export default function sendContactUsForm(params: {
       .then(() => dispatch({ type: 'CONTACT_US_SUCCESS' }))
       .catch(err => dispatch({
         type: 'CONTACT_US_SET_ERROR',
-        payload: { error: err.message }
+        payload: { error: err.response.data.error || err.message }
       }))
   }
 }

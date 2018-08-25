@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux'
 
-import contactUsReduser from './ContactUs/ContactUs.reducer'
+import contactUsReducer from './ContactUs/ContactUs.reducer'
+import modalReducer from './Modal/Modal.reducer'
 
 const rootReducer = combineReducers({
-  contactUsReduser
+  contactUsReducer,
+  modalReducer
 })
 
 export default rootReducer

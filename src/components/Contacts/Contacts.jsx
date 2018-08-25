@@ -6,10 +6,11 @@ import { connect } from 'react-redux'
 
 import { bs4, Input } from '../shared'
 import styles from './Contacts.scss'
-import { sendContactUsForm } from '../../redux'
+import { sendContactUsForm, setModal } from '../../redux'
 
 type Props = {
   isLoading: boolean,
+  isFormSent: boolean,
   error: string,
   sendContactUsForm: Function
 }
@@ -19,7 +20,10 @@ type State = {
   lastName: string,
   phone: string,
   email: string,
-  message: string
+  message: string,
+  isFirstNameValid: string,
+  isEmailValid: string,
+  isMessageValid: string,
 }
 
 class Contacts extends React.Component<Props, State> {
@@ -27,7 +31,7 @@ class Contacts extends React.Component<Props, State> {
   constructor(props: Props){
     super(props)
     this.onInputChange = this.onInputChange.bind(this)
-    this.onMessageChange = this.onMessageChange.bind(this)
+    this.onInputValidityChange = this.onInputValidityChange.bind(this)
     this.submit = this.submit.bind(this)
   }
 
@@ -36,19 +40,51 @@ class Contacts extends React.Component<Props, State> {
     lastName: '',
     phone: '',
     email: '',
-    message: ''
+    message: '',
+    validations: {
+      firstName: true,
+      email: true,
+      message: true
+    }
+  }
+
+  componentWillUpdate(newProps) {
+    if (newProps.isFormSent !== this.props.isFormSent && newProps.isFormSent) {
+      this.props.setModal('Success', 'Thank you for your message')
+      this.setState({
+        firstName: '',
+        lastName: '',
+        phone: '',
+        email: '',
+        message: '',
+        validations: {
+          firstName: true,
+          email: true,
+          message: true
+        }
+      })
+    } 
+
+    if (newProps.error !== this.props.error && newProps.error) {
+      this.props.setModal('Error', newProps.error)
+    } 
   }
 
   onInputChange(id: string, value: string) {
     this.setState({ [id]: value })
   }
 
-  onMessageChange(e: any) {
-    this.setState({ message: e.target.value })
+  onInputValidityChange(id: string, isValid: boolean) {
+    const validations = Object.assign({}, this.state.validations, {[id]: isValid})
+    this.setState({ validations })
   }
 
   submit() {
     this.props.sendContactUsForm(this.state)
+  }
+  
+  isSubmitDisabled() {
+    return !(this.state.firstName && this.state.email && this.state.message && this.state.validations.email)
   }
 
   render() {
@@ -68,8 +104,11 @@ class Contacts extends React.Component<Props, State> {
                 type="text" 
                 id="firstName"
                 placeholder="First Name" 
+                isRequired
+                isInvalid={!this.state.validations.firstName}
                 value={this.state.firstName} 
                 onChange={this.onInputChange}
+                onInputValidityChange={this.onInputValidityChange}
               />
             </div>
             <div className={[bs4['col-12'], bs4['col-md-6']].join(' ')}>
@@ -87,9 +126,12 @@ class Contacts extends React.Component<Props, State> {
               <Input 
                 type="email"
                 id="email"
+                isRequired
+                isInvalid={!this.state.validations.email}
                 placeholder="Email Address" 
                 value={this.state.email} 
                 onChange={this.onInputChange}
+                onInputValidityChange={this.onInputValidityChange}
               />
             </div>
             <div className={[bs4['col-12'], bs4['col-md-6']].join(' ')}>
@@ -103,12 +145,15 @@ class Contacts extends React.Component<Props, State> {
             </div>
           </div>
           <div className={[bs4['form-group']].join(' ')}>
-            <textarea 
-              className={bs4['form-control']} 
+            <Input 
+              type="textarea"
+              id="message"
+              isRequired
+              isInvalid={!this.state.validations.message}
               placeholder="How can we help you?" 
-              rows="5" 
               value={this.state.message} 
-              onChange={this.onMessageChange}
+              onChange={this.onInputChange}
+              onInputValidityChange={this.onInputValidityChange}
             />
           </div>
           <div className={[bs4['form-group'], bs4['text-center']].join(' ')}>
@@ -116,7 +161,7 @@ class Contacts extends React.Component<Props, State> {
               type="button"
               className={[bs4.btn, bs4['btn-success'], bs4['btn-lg'], this.props.isLoading ? styles.sending : ''].join(' ')} 
               onClick={this.submit}
-              disabled={this.props.isLoading}
+              disabled={this.props.isLoading || this.isSubmitDisabled()}
             >
               Submit
               {this.props.isLoading && <i className="fa fa-circle-o-notch fa-spin"></i>}
@@ -131,13 +176,17 @@ class Contacts extends React.Component<Props, State> {
 }
 
 const mapStateToProps = state => ({
-  error: state.contactUsReduser.error,
-  isLoading: state.contactUsReduser.isLoading
+  error: state.contactUsReducer.error,
+  isLoading: state.contactUsReducer.isLoading,
+  isFormSent: state.contactUsReducer.isFormSent
 })
 
 const mapDispatchToProps = dispatch => ({
   sendContactUsForm(data) {
     dispatch(sendContactUsForm(data))
+  },
+  setModal(title: string, content: string) {
+    dispatch(setModal(title, content))
   }
 })
 
