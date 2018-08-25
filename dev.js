@@ -17,6 +17,6 @@ app.use(webpackDevMiddleware(compiler, {
 app.use(webpackHotMiddleware(compiler.compilers.find(compiler => compiler.name === 'client')));
 app.use(webpackHotServerMiddleware(compiler));
 
-app.listen(3000, () => {
-  console.log('Started dev server on port: 3000')
+app.listen(8080, () => {
+  console.log('Started dev server on port: 8080')
 });

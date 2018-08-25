@@ -1,4 +1,6 @@
 const path = require('path')
+const webpack = require('webpack')
+const environment = require('./config/environment-vars')
 
 module.exports = [
   {
@@ -54,6 +56,11 @@ module.exports = [
         }
       ],
     },
+    plugins: [
+      new webpack.DefinePlugin({
+        'process.env': environment
+      })
+    ]
   },
   {
     mode: 'development',
@@ -109,5 +116,10 @@ module.exports = [
         }
       ],
     },
-  }
+    plugins: [
+      new webpack.DefinePlugin({
+        'process.env': environment
+      })
+    ]
+  },
 ]

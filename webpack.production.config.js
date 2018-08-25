@@ -63,9 +63,7 @@ module.exports = [
 		},
 		plugins: [
 			new webpack.DefinePlugin({
-				'process.env': {
-					NODE_ENV: '"production"'
-				}
+				'process.env': environment
 			}),
 			new webpack.optimize.OccurrenceOrderPlugin(),
 			new CompressionPlugin({
@@ -135,6 +133,9 @@ module.exports = [
 			],
 		},
 		plugins: [
+			new webpack.DefinePlugin({
+				'process.env': environment
+			}),
 			new CopyWebpackPlugin([{ from: 'assets', to: 'assets' }]),
 		  new MiniCssExtractPlugin({
 				filename: "assets/styles/[name].css",

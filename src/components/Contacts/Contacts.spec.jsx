@@ -3,7 +3,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import Contacts from './Contacts'
+import { UnwrappedContacts as Contacts } from './Contacts'
 
 const mockedData = {
 

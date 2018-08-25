@@ -2,11 +2,16 @@
 
 import React from 'react'
 import { Helmet } from 'react-helmet'
+import { connect } from 'react-redux'
 
 import { bs4, Input } from '../shared'
 import styles from './Contacts.scss'
+import { sendContactUsForm } from '../../redux'
 
 type Props = {
+  isLoading: boolean,
+  error: string,
+  sendContactUsForm: Function
 }
 
 type State = {
@@ -43,7 +48,7 @@ class Contacts extends React.Component<Props, State> {
   }
 
   submit() {
-
+    this.props.sendContactUsForm(this.state)
   }
 
   render() {
@@ -107,7 +112,15 @@ class Contacts extends React.Component<Props, State> {
             />
           </div>
           <div className={[bs4['form-group'], bs4['text-center']].join(' ')}>
-            <button type="button" className={[bs4.btn, bs4['btn-success'], bs4['btn-lg']].join(' ')} onClick={this.submit}>Submit</button>
+            <button 
+              type="button"
+              className={[bs4.btn, bs4['btn-success'], bs4['btn-lg'], styles.sending].join(' ')} 
+              onClick={this.submit}
+              disabled={this.props.isLoading}
+            >
+              <i className="fa fa-circle-o-notch fa-spin"></i>
+              Submit
+            </button>
           </div>
           
         </form>
@@ -117,4 +130,17 @@ class Contacts extends React.Component<Props, State> {
   }
 }
 
-export default Contacts
+const mapStateToProps = state => ({
+  error: state.contactUsReduser.error,
+  isLoading: state.contactUsReduser.isLoading
+})
+
+const mapDispatchToProps = dispatch => ({
+  sendContactUsForm(data) {
+    dispatch(sendContactUsForm(data))
+  }
+})
+
+export const UnwrappedContacts = Contacts
+
+export default connect(mapStateToProps, mapDispatchToProps)(Contacts)
