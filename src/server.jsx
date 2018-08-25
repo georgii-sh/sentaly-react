@@ -19,7 +19,7 @@ export default function serverRenderer({ clientStats, serverStats }) {
         </Provider>
     )
     const helmet = Helmet.renderStatic()
-
+    res.set('Cache-Control', 'public, max-age=600, s-maxage=1200')
     res.status(200).send(Template({
       markup,
       helmet

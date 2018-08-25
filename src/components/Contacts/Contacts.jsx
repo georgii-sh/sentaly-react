@@ -114,12 +114,12 @@ class Contacts extends React.Component<Props, State> {
           <div className={[bs4['form-group'], bs4['text-center']].join(' ')}>
             <button 
               type="button"
-              className={[bs4.btn, bs4['btn-success'], bs4['btn-lg'], styles.sending].join(' ')} 
+              className={[bs4.btn, bs4['btn-success'], bs4['btn-lg'], this.props.isLoading ? styles.sending : ''].join(' ')} 
               onClick={this.submit}
               disabled={this.props.isLoading}
             >
-              <i className="fa fa-circle-o-notch fa-spin"></i>
               Submit
+              {this.props.isLoading && <i className="fa fa-circle-o-notch fa-spin"></i>}
             </button>
           </div>
           
