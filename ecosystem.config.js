@@ -7,7 +7,7 @@ module.exports = {
       env: {
         "PORT": 8080,
         "NODE_ENV": "productions",
-        "API_URL": "http://api.sentaly.com/"
+        "API_URL": "https://api.sentaly.com/"
       }
     }
   ]
