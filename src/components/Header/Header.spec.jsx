@@ -5,7 +5,7 @@ import { shallow } from 'enzyme'
 import Header from './Header'
 
 const mockedData = {
-
+  title: 'Test title'
 }
 
 describe('Header', () => {
@@ -13,5 +13,10 @@ describe('Header', () => {
 
   test('renders correctly', () => {
     expect(component).toMatchSnapshot()
+  })
+
+  test('should display correct title', () => {
+    expect(component.find('.navbar-brand').length).toEqual(1)
+    expect(component.find('.navbar-brand').text()).toEqual(mockedData.title)
   })
 })

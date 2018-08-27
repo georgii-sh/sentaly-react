@@ -8,7 +8,6 @@ import styles from './Footer.scss'
 import { copyright, menu } from './items'
 
 type Props = {
-  title: string
 }
 
 class Footer extends React.PureComponent<Props> {

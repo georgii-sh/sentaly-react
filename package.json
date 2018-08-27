@@ -10,7 +10,7 @@
     "dev": "cross-env NODE_ENV=development node dev",
     "build": "cross-env NODE_ENV=production webpack --config webpack.production.config.js --progress --profile",
     "start": "node server",
-    "test": "jest --verbose --colors",
+    "test": "jest --verbose --colors --coverage",
     "test:update": "npm run test -- -u"
   },
   "keywords": [],

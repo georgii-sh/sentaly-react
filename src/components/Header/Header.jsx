@@ -19,26 +19,6 @@ class Header extends React.PureComponent<Props> {
             <img src="/assets/icons/logo-white.png" className={styles.logo} />
             {this.props.title}
           </a>
-          {/* <ul className={[bs4['navbar-nav'], bs4['mr-auto'], bs4['mt-2'], bs4['mt-lg-0']].join('')}>
-            <li className={bs4['nav-item']}>
-              <Link
-                className={[bs4['nav-link']].join(' ')}
-                to="/login"
-                href=" "
-              >
-                  Link
-              </Link>
-            </li>
-            <li className={bs4['nav-item']}>
-              <Link
-                className={[bs4['nav-link']].join(' ')}
-                to="/about"
-                href=" "
-              >
-                About
-              </Link>
-            </li>
-          </ul> */}
         </div>
       </nav>
     )
