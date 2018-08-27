@@ -8,13 +8,14 @@ test('SET_MODAL', () => {
     {
       type: 'SET_MODAL',
       payload: {
-        type: 'test',
-        data: {}
+        content: 'content test',
+        title: 'title test'
       }
     }
   )
   expect(state).toEqual({
-    type: 'test',
-    data: {}
+    isShown: true,
+    content: 'content test',
+    title: 'title test'
   })
 })
