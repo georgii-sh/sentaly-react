@@ -19,11 +19,25 @@ describe('Contacts Component', () => {
     expect(component).toMatchSnapshot()
   })
 
-  test('should have correct inputs', () => {
-    expect(component.find('#firstName').length).toEqual(1)
-    expect(component.find('#lastName').length).toEqual(1)
-    expect(component.find('#email').length).toEqual(1)
-    expect(component.find('#phone').length).toEqual(1)
-    expect(component.find('#message').length).toEqual(1)
+  test('onInputChange should set correct state', () => {
+    component.instance().onInputChange('testId', 'testValue')
+    expect(component.state().testId).toEqual('testValue')
   })
+
+  test('should show success modal if isFormSent is updated', () => {
+    const setModal = jest.fn()
+    component.setProps({ setModal })
+    component.instance().componentWillUpdate({ isFormSent: true })
+    expect(setModal).toHaveBeenCalledTimes(1)
+    expect(setModal).toHaveBeenCalledWith('Success', 'Thank you for your message')
+  })
+
+  test('should show success modal if error is updated', () => {
+    const setModal = jest.fn()
+    component.setProps({ setModal })
+    component.instance().componentWillUpdate({ error: 'error text' })
+    expect(setModal).toHaveBeenCalledTimes(1)
+    expect(setModal).toHaveBeenCalledWith('Error', 'error text')
+  })
+
 })

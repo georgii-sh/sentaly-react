@@ -3,7 +3,7 @@ import { setModal, closeModal } from './Modal.actionCreators'
 
 describe('Modal actions', () => {
 
-  test('setModal should return correct value', () => {
+  it('setModal should return correct value', () => {
     const result = setModal('test-title', 'test-content')
     expect(result).toEqual({
       type: 'SET_MODAL',
@@ -14,7 +14,7 @@ describe('Modal actions', () => {
     })
   })
 
-  test('setModal should return correct value', () => {
+  it('setModal should return correct value', () => {
     const result = closeModal()
     expect(result).toEqual({
       type: 'CLOSE_MODAL',

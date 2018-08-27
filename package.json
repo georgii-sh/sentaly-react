@@ -9,9 +9,8 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development node dev",
     "build": "cross-env NODE_ENV=production webpack --config webpack.production.config.js --progress --profile",
-    "start": "node server",
-    "test": "jest --verbose --colors --coverage",
-    "test:update": "npm run test -- -u"
+    "start": "node server.js",
+    "test": "jest --verbose --colors --coverage -u"
   },
   "keywords": [],
   "author": "",
@@ -52,6 +51,7 @@
     "isomorphic-style-loader": "^4.0.0",
     "jest": "^23.5.0",
     "mini-css-extract-plugin": "^0.4.2",
+    "moxios": "^0.4.0",
     "node-sass": "^4.9.3",
     "optimize-css-assets-webpack-plugin": "^5.0.0",
     "sass-loader": "^7.1.0",

@@ -4,9 +4,10 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
 
-import { bs4, Input } from '../shared'
+import { bs4 } from '../shared'
 import styles from './Contacts.scss'
 import { sendContactUsForm, setModal } from '../../redux'
+import Form from './Form/Form'
 
 type Props = {
   isLoading: boolean,
@@ -20,10 +21,7 @@ type State = {
   lastName: string,
   phone: string,
   email: string,
-  message: string,
-  isFirstNameValid: string,
-  isEmailValid: string,
-  isMessageValid: string,
+  message: string
 }
 
 class Contacts extends React.Component<Props, State> {
@@ -31,7 +29,6 @@ class Contacts extends React.Component<Props, State> {
   constructor(props: Props){
     super(props)
     this.onInputChange = this.onInputChange.bind(this)
-    this.onInputValidityChange = this.onInputValidityChange.bind(this)
     this.submit = this.submit.bind(this)
   }
 
@@ -40,12 +37,7 @@ class Contacts extends React.Component<Props, State> {
     lastName: '',
     phone: '',
     email: '',
-    message: '',
-    validations: {
-      firstName: true,
-      email: true,
-      message: true
-    }
+    message: ''
   }
 
   componentWillUpdate(newProps) {
@@ -56,12 +48,7 @@ class Contacts extends React.Component<Props, State> {
         lastName: '',
         phone: '',
         email: '',
-        message: '',
-        validations: {
-          firstName: true,
-          email: true,
-          message: true
-        }
+        message: ''
       })
     } 
 
@@ -72,11 +59,6 @@ class Contacts extends React.Component<Props, State> {
 
   onInputChange(id: string, value: string) {
     this.setState({ [id]: value })
-  }
-
-  onInputValidityChange(id: string, isValid: boolean) {
-    const validations = Object.assign({}, this.state.validations, {[id]: isValid})
-    this.setState({ validations })
   }
 
   submit() {
@@ -97,77 +79,17 @@ class Contacts extends React.Component<Props, State> {
           contact you as soon as possible.
         </div>
 
-        <form className={styles.contacts__form}>
-          <div className={[bs4.row, bs4['form-group']].join(' ')}>
-            <div className={[bs4['col-12'], bs4['col-md-6']].join(' ')}>
-              <Input 
-                type="text" 
-                id="firstName"
-                placeholder="First Name" 
-                isRequired
-                isInvalid={!this.state.validations.firstName}
-                value={this.state.firstName} 
-                onChange={this.onInputChange}
-                onInputValidityChange={this.onInputValidityChange}
-              />
-            </div>
-            <div className={[bs4['col-12'], bs4['col-md-6']].join(' ')}>
-              <Input 
-                type="text" 
-                id="lastName"
-                placeholder="Last Name" 
-                value={this.state.lastName} 
-                onChange={this.onInputChange}
-              />
-            </div>
-          </div>
-          <div className={[bs4.row, bs4['form-group']].join(' ')}>
-            <div className={[bs4['col-12'], bs4['col-md-6']].join(' ')}>
-              <Input 
-                type="email"
-                id="email"
-                isRequired
-                isInvalid={!this.state.validations.email}
-                placeholder="Email Address" 
-                value={this.state.email} 
-                onChange={this.onInputChange}
-                onInputValidityChange={this.onInputValidityChange}
-              />
-            </div>
-            <div className={[bs4['col-12'], bs4['col-md-6']].join(' ')}>
-              <Input 
-                type="text" 
-                id="phone"
-                placeholder="Phone Number" 
-                value={this.state.phone} 
-                onChange={this.onInputChange}
-              />
-            </div>
-          </div>
-          <div className={[bs4['form-group']].join(' ')}>
-            <Input 
-              type="textarea"
-              id="message"
-              isRequired
-              isInvalid={!this.state.validations.message}
-              placeholder="How can we help you?" 
-              value={this.state.message} 
-              onChange={this.onInputChange}
-              onInputValidityChange={this.onInputValidityChange}
-            />
-          </div>
-          <div className={[bs4['form-group'], bs4['text-center']].join(' ')}>
-            <button 
-              type="button"
-              className={[bs4.btn, bs4['btn-success'], bs4['btn-lg'], this.props.isLoading ? styles.sending : ''].join(' ')} 
-              onClick={this.submit}
-              disabled={this.props.isLoading || this.isSubmitDisabled()}
-            >
-              {this.props.isLoading ? 'Submiting...' : 'Submit'}
-            </button>
-          </div>
-          
-        </form>
+        <Form 
+          firstName={this.state.firstName}
+          lastName={this.state.lastName}
+          email={this.state.email}
+          phone={this.state.phone}
+          message={this.state.message}
+          isLoading={this.props.isLoading}
+          onInputChange={this.onInputChange}
+          onSubmit={this.submit}
+          isSubmitDisabled={this.isSubmitDisabled()}
+        />
 
       </div>
     )
