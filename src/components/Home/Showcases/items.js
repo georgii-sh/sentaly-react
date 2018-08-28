@@ -19,6 +19,6 @@ export default [
     isImageFirst: true,
     image: "/assets/images/bg-showcase-4.jpg",
     title: "IT Consultancy",
-    text: "With over 10 years’ experience in IT consultancy, we can develop and tailor a specific solution  for your needs."
+    text: "With extensive experience in IT consultancy, we can develop and tailor a specific solution for your needs."
   }
 ]
