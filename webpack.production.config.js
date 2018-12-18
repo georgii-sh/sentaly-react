@@ -13,9 +13,9 @@ module.exports = [
     mode: 'production',
 		name: 'client',
 		target: 'web',
-    entry: './src/client.jsx',
+    	entry: './src/client.jsx',
 		output: {
-      path: path.join(__dirname, 'public'),
+      		path: path.join(__dirname, 'public'),
 			filename: 'client.js',
 			publicPath: '/public/',
 		},
@@ -82,10 +82,10 @@ module.exports = [
 		target: 'node',
 		entry: './src/server.jsx',
 		output: {
-      path: path.join(__dirname, 'public'),
+      		path: path.join(__dirname, 'public'),
 			filename: 'server.js',
 			libraryTarget: 'commonjs2',
-      publicPath: '/public/',
+			publicPath: '/public/',
 		},
 		devtool: 'source-map',
 		resolve: {
