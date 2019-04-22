@@ -1,5 +1,6 @@
-import Home from './Home/Home'
-import Contacts from './Contacts/Contacts'
+import Home from './Pages/Home/Home'
+import Contacts from './Pages/Contacts/Contacts'
+import NotFound from './Pages/NotFound/NotFound'
 
 export default [
   {
@@ -9,6 +10,12 @@ export default [
   },
   {
     path: '/contacts',
+    exact: true,
     component: Contacts
+  },
+  {
+    path: '*',
+    component: NotFound,
+    status: 404
   }
 ]

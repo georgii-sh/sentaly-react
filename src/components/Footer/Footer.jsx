@@ -7,10 +7,7 @@ import { bs4 } from '../shared'
 import styles from './Footer.scss'
 import copyright from './items'
 
-type Props = {
-}
-
-class Footer extends React.PureComponent<Props> {
+class Footer extends React.PureComponent {
 
   scrollTop() {
     window.scrollTo(0, 0)
