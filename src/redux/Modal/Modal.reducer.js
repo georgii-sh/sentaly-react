@@ -2,7 +2,8 @@
 
 type State = {
   isShown?: boolean,
-  data?: {}
+  content?: '',
+  title?: ''
 }
 
 type Action = {
@@ -15,7 +16,8 @@ type Action = {
 
 const INITIAL_STATE = {
   isShown: false,
-  data: {}
+  content: '',
+  title: ''
 }
 
 const ModalReducer = (state: State = INITIAL_STATE, action: Action) => {

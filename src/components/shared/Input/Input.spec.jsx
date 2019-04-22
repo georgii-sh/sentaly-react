@@ -61,13 +61,39 @@ describe('Input Component', () => {
     processValidationStub.restore()
   })
 
-  test('should not contains invalid class is isInvalid props is false', () => {
-    expect(component.find('.form-control').hasClass('invalid')).toBeFalsy()
+  test('thould set type of input to text if props.type is null', () => {
+    component.setProps({ type: null })
+    expect(component.find('.form-control').prop('type')).toEqual('text')
   })
 
-  test('should contains invalid class is isInvalid props is true', () => {
-    component.setProps({ isInvalid: true })
-    expect(component.find('.form-control').hasClass('invalid')).toBeTruthy()
+  describe('input', () => {
+    beforeEach(() => {
+      component.setProps({ type: 'text' })
+    })
+    
+    test('should not contains invalid class is isInvalid props is false', () => {
+      expect(component.find('.form-control').hasClass('invalid')).toBeFalsy()
+    })
+
+    test('should contains invalid class is isInvalid props is true', () => {
+      component.setProps({ isInvalid: true })
+      expect(component.find('.form-control').hasClass('invalid')).toBeTruthy()
+    })
+  })
+
+  describe('textarea', () => {
+    beforeEach(() => {
+      component.setProps({ type: 'textarea' })
+    })
+
+    test('should not contains invalid class is isInvalid props is false', () => {
+      expect(component.find('.form-control').hasClass('invalid')).toBeFalsy()
+    })
+
+    test('should contains invalid class is isInvalid props is true', () => {
+      component.setProps({ isInvalid: true })
+      expect(component.find('.form-control').hasClass('invalid')).toBeTruthy()
+    })
   })
   
   describe('processValidation method email validation', () => {

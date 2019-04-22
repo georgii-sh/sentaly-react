@@ -4,6 +4,11 @@ import reducers from './ContactUs.reducer'
 
 describe('ContactUs reducer', () => {
 
+  test('default', () => {
+    const state = reducers({ test: 'test' }, { type: 'TEST' })
+    expect(state).toEqual({ test: 'test' })
+  })
+
   test('CONTACT_US_LOADING', () => {
     const state = reducers(
       { 

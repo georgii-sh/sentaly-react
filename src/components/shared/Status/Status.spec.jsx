@@ -7,7 +7,7 @@ import Status from './Status'
 
 const mockedData = {
   code: 404,
-  children: '' 
+  children: 'test children' 
 }
 
 describe('Input Component', () => {
@@ -15,5 +15,24 @@ describe('Input Component', () => {
 
   test('renders correctly', () => {
     expect(component).toMatchSnapshot()
+  })
+
+  test('updateStatusCode should set correct status', () => {
+    const context = {
+      staticContext: {
+        status: 200
+      }
+    }
+    component.instance().updateStatusCode(context)
+    expect(context.staticContext.status).toEqual(404)
+  })
+
+  test('updateStatusCode should return children from props', () => {
+    const context = {
+      staticContext: {
+        status: 200
+      }
+    }
+    expect(component.instance().updateStatusCode(context)).toEqual('test children')
   })
 })
