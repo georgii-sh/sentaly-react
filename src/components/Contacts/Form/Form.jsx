@@ -108,6 +108,7 @@ class Form extends React.PureComponent<Props, State> {
         <div className={[bs4['form-group'], bs4['text-center']].join(' ')}>
           <button
             type="button"
+            id="submitButton"
             className={[bs4.btn, bs4['btn-success'], bs4['btn-lg'], this.props.isLoading ? styles.sending : ''].join(' ')}
             onClick={this.submit}
             disabled={this.props.isLoading || this.props.isSubmitDisabled}

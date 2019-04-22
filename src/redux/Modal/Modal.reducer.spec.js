@@ -3,7 +3,7 @@
 import reducers from './Modal.reducer'
 
 describe('Modal reducer', () => {
-
+  
   test('SET_MODAL', () => {
     const state = reducers(
       {},
@@ -17,7 +17,6 @@ describe('Modal reducer', () => {
     )
     expect(state).toEqual({ isShown: true, content: 'content test', title: 'title test' })
   })
-
 
   test('CLOSE_MODAL', () => {
     const state = reducers({ isShown: true }, { type: 'CLOSE_MODAL' })

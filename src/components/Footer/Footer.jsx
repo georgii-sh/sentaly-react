@@ -13,7 +13,7 @@ type Props = {
 class Footer extends React.PureComponent<Props> {
 
   scrollTop() {
-    window.scroll(0, 0)
+    window.scrollTo(0, 0)
   }
 
   render() {

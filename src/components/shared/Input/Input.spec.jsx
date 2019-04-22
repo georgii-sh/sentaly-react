@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { shallow } from 'enzyme'
+import sinon from 'sinon'
 
 import Input from './Input'
 
@@ -16,21 +17,26 @@ const mockedData = {
 }
 
 describe('Input Component', () => {
-  const component = shallow(<Input {...mockedData} />)
+  let component
+
+  beforeEach(() => {
+    component = shallow(<Input {...mockedData} />)
+  })
 
   test('renders correctly', () => {
     expect(component).toMatchSnapshot()
   })
 
-  test('should contains one input element', () => {
+  test('should contains one input element if type is text', () => {
     expect(component.find('input').length).toEqual(1)
+    expect(component.find('textarea').length).toEqual(0)
   })
 
   test('should contains one textarea element if type is textarea', () => {
     component.setProps({ type: 'textarea'})
     expect(component.find('input').length).toEqual(0)
     expect(component.find('textarea').length).toEqual(1)
-    component.setProps({ type: 'test_type' })
+    component.setProps({ type: 'text' })
   })
 
   test('input element should have correct props setted', () => {
@@ -44,6 +50,23 @@ describe('Input Component', () => {
     component.instance().onInputChange({ target: { value: 'test_value'}})
     expect(mockedData.onChange).toHaveBeenCalledTimes(1)
     expect(mockedData.onChange).toHaveBeenCalledWith(mockedData.id, 'test_value')
+  })
+
+  test('onBlur should call processValidation', () => {
+    const processValidationStub = sinon.stub(Input.prototype, 'processValidation').returns(false)
+    component.instance().onBlur()
+    expect(processValidationStub.calledOnce).toBeTruthy()
+    expect(processValidationStub.calledWith('test_value')).toBeTruthy()
+    processValidationStub.restore()
+  })
+
+  test('should not contains invalid class is isInvalid props is false', () => {
+    expect(component.find('.form-control').hasClass('invalid')).toBeFalsy()
+  })
+
+  test('should contains invalid class is isInvalid props is true', () => {
+    component.setProps({ isInvalid: true })
+    expect(component.find('.form-control').hasClass('invalid')).toBeTruthy()
   })
   
   describe('processValidation method email validation', () => {

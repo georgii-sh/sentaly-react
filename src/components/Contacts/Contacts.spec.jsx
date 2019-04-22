@@ -40,4 +40,9 @@ describe('Contacts Component', () => {
     expect(setModal).toHaveBeenCalledWith('Error', 'error text')
   })
 
+  test('submit should call sendContactUsForm from props', () => {
+    component.instance().submit()
+    expect(mockedData.sendContactUsForm).toHaveBeenCalledTimes(1)
+  })
+
 })

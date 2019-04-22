@@ -7,6 +7,8 @@ import { connect } from 'react-redux'
 import { bs4 } from '../'
 import { closeModal } from '../../../redux'
 
+import styles from './Modal.scss'
+
 type Props = {
   title: string,
   content: string,
@@ -24,8 +26,7 @@ class Modal extends React.PureComponent<Props> {
   render() {
     return (
       <div 
-        className={[bs4.modal].join(' ')}
-        style={{ display: this.props.isShown ? 'block': 'none' }}
+        className={[bs4.modal, this.props.isShown ? styles.visible : styles.hiden].join(' ')}
         tabIndex={-1} 
         role="dialog"
       >
