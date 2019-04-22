@@ -8,7 +8,9 @@ type State = {
 
 type Action = {
   type: string,
-  payload: State
+  payload?: {
+    error: string
+  }
 }
 
 const DEFAULT_STATE = {
@@ -24,7 +26,11 @@ export default (state: State = DEFAULT_STATE, action: Action) => {
     case 'CONTACT_US_SUCCESS':
       return Object.assign({}, state, { error: '', isLoading: false, isFormSent: true })
     case 'CONTACT_US_SET_ERROR':
-      return Object.assign({}, state, { error: action.payload.error, isLoading: false, isFormSent: false })
+      if (action.payload) {
+        const { error } = action.payload
+        return Object.assign({}, state, { error, isLoading: false, isFormSent: false })
+      }
+      return Object.assign({}, state, { isLoading: false, isFormSent: false })
     default:
       return state
   }

@@ -1,0 +1,1 @@
+export default 'We are sorry, The page you requested cannot be found.'

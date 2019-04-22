@@ -17,3 +17,5 @@ After that run **npm run start**. This command will run `node server.js`
 ## Testing
 
 To run the tests and update the tests snapshots use **npm run test**
+
+To run eslint check, flow check and tests use **npm run test:all**

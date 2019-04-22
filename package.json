@@ -12,7 +12,8 @@
     "start": "node server.js",
     "test": "jest --verbose --colors --coverage -u",
     "flow": "./node_modules/.bin/flow",
-    "lint": "eslint '{src,config}/**/*.{js,jsx,json}' server.js dev.js package.json"
+    "lint": "eslint '{src,config}/**/*.{js,jsx,json}' server.js dev.js package.json",
+    "test:all": "npm run lint && npm run flow && npm run test"
   },
   "keywords": [],
   "author": "Georgii Sh",
@@ -59,6 +60,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
+    "flow-bin": "^0.97.0",
     "identity-obj-proxy": "^3.0.0",
     "isomorphic-style-loader": "^4.0.0",
     "jest": "^23.6.0",

@@ -4,14 +4,13 @@ import reducers from './ContactUs.reducer'
 
 describe('ContactUs reducer', () => {
 
-  test('default', () => {
-    const state = reducers({ test: 'test' }, { type: 'TEST' })
-    expect(state).toEqual({ test: 'test' })
-  })
-
   test('CONTACT_US_LOADING', () => {
     const state = reducers(
-      { error: 'test' },
+      { 
+        error: 'test',
+        isLoading: false,
+        isFormSent: false
+      },
       { type: 'CONTACT_US_LOADING'}
     )
     expect(state).toEqual({ error: '', isLoading: true, isFormSent: false })
@@ -19,7 +18,11 @@ describe('ContactUs reducer', () => {
 
   test('CONTACT_US_SUCCESS', () => {
     const state = reducers(
-      { isLoading: true },
+      { 
+        error: '',
+        isLoading: false,
+        isFormSent: false 
+      },
       { type: 'CONTACT_US_SUCCESS' }
     )
     expect(state).toEqual({ error: '', isLoading: false, isFormSent: true })
@@ -27,7 +30,11 @@ describe('ContactUs reducer', () => {
 
   test('CONTACT_US_SET_ERROR', () => {
     const state = reducers(
-      { isLoading: true },
+      { 
+        error: '',
+        isLoading: true,
+        isFormSent: false
+      },
       { type: 'CONTACT_US_SET_ERROR', payload: { error: 'test error' } }
     )
     expect(state).toEqual({ error: 'test error', isLoading: false, isFormSent: false })

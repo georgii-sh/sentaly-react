@@ -11,7 +11,7 @@ import styles from './Modal.scss'
 type Props = {
   title: string,
   content: string,
-  isShown: string,
+  isShown: boolean,
   closeModal: Function
 }
 
@@ -52,13 +52,13 @@ class Modal extends React.PureComponent<Props> {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state: any) => ({
   isShown: state.modalReducer.isShown,
   title: state.modalReducer.title,
   content: state.modalReducer.content
 })
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch: Function) => ({
   closeModal() {
     dispatch(closeModal())
   }
