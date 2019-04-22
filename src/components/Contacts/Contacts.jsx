@@ -26,12 +26,6 @@ type State = {
 
 class Contacts extends React.Component<Props, State> {
 
-  constructor(props: Props){
-    super(props)
-    this.onInputChange = this.onInputChange.bind(this)
-    this.submit = this.submit.bind(this)
-  }
-
   state = {
     firstName: '',
     lastName: '',
@@ -57,11 +51,11 @@ class Contacts extends React.Component<Props, State> {
     } 
   }
 
-  onInputChange(id: string, value: string) {
+  onInputChange = (id: string, value: string) => {
     this.setState({ [id]: value })
   }
 
-  submit() {
+  submit = () => {
     this.props.sendContactUsForm(this.state)
   }
   

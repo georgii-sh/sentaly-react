@@ -26,28 +26,21 @@ type State = {
 
 class Form extends React.PureComponent<Props, State> {
 
-  constructor(props: Props) {
-    super(props)
-    this.onInputChange = this.onInputChange.bind(this)
-    this.onInputValidityChange = this.onInputValidityChange.bind(this)
-    this.submit = this.submit.bind(this)
-  }
-
   state = {
     isfirstNameValid: true,
     isemailValid: true,
     ismessageValid: true 
   }
 
-  onInputChange(id: string, value: string) {
+  onInputChange = (id: string, value: string) => {
     this.props.onInputChange(id, value)
   }
 
-  onInputValidityChange(id: string, isValid: boolean) {
+  onInputValidityChange = (id: string, isValid: boolean) => {
     this.setState({ [`is${id}Valid`]: isValid })
   }
 
-  submit() {
+  submit = () => {
     this.props.onSubmit()
   }
 

@@ -17,12 +17,7 @@ type Props = {
 
 class Modal extends React.PureComponent<Props> {
 
-  constructor(params) {
-    super(params)
-    this.close = this.close.bind(this)
-  }
-
-  close() {
+  close = () => {
     this.props.closeModal()
   }
 

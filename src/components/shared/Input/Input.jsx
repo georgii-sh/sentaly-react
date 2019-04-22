@@ -18,18 +18,12 @@ type Props = {
 
 class Contacts extends React.Component<Props> {
 
-  constructor(props: Props) {
-    super(props)
-    this.onInputChange = this.onInputChange.bind(this)
-    this.onBlur = this.onBlur.bind(this)
-  }
-
-  onInputChange(e: any) {
+  onInputChange = (e: any) => {
     this.props.onChange(this.props.id, e.target.value)
     this.processValidation(e.target.value)
   }
 
-  onBlur() {
+  onBlur = () => {
     this.processValidation(this.props.value)
   }
 
