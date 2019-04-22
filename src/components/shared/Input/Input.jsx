@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { bs4 } from '../'
+import bs4 from '../bs4'
 import styles from './Input.scss'
 
 type Props = {
@@ -19,44 +19,48 @@ type Props = {
 class Contacts extends React.Component<Props> {
 
   onInputChange = (e: any) => {
-    this.props.onChange(this.props.id, e.target.value)
+    const { id, onChange } = this.props
+    onChange(id, e.target.value)
     this.processValidation(e.target.value)
   }
 
   onBlur = () => {
-    this.processValidation(this.props.value)
+    const { value } = this.props
+    this.processValidation(value)
   }
 
   processValidation(value) {
-    if (this.props.type === 'email') {
+    const { type, id, isRequired, onInputValidityChange } = this.props
+    if (type === 'email') {
       const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
       const isValid = regex.test(value)
-      this.props.onInputValidityChange(this.props.id, isValid)
+      if (typeof onInputValidityChange === 'function') {
+        onInputValidityChange(id, isValid)
+      }
       return
     }
-    if (this.props.isRequired) {
-      if (typeof this.props.onInputValidityChange === 'function') {
-        this.props.onInputValidityChange(this.props.id, !!value)
-      }
+    if (typeof onInputValidityChange === 'function' && isRequired) {
+      onInputValidityChange(id, !!value)
     }
   }
   
   render() {
-    return this.props.type === 'textarea' ? 
+    const { type, isInvalid, value, placeholder } = this.props
+    return type === 'textarea' ? 
       <textarea
-        className={[bs4['form-control'], this.props.isInvalid ? styles.invalid : ''].join(' ')}
-        placeholder={this.props.placeholder}
-        value={this.props.value}
+        className={[bs4['form-control'], isInvalid ? styles.invalid : ''].join(' ')}
+        placeholder={placeholder}
+        value={value}
         onChange={this.onInputChange}
         onBlur={this.onBlur}
         rows={5}
       /> 
       : 
       <input
-        type={this.props.type || 'text'}
-        className={[bs4['form-control'], this.props.isInvalid ? styles.invalid : ''].join(' ')}
-        placeholder={this.props.placeholder}
-        value={this.props.value}
+        type={type || 'text'}
+        className={[bs4['form-control'], isInvalid ? styles.invalid : ''].join(' ')}
+        placeholder={placeholder}
+        value={value}
         onChange={this.onInputChange}
         onBlur={this.onBlur}
       />

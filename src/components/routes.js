@@ -3,11 +3,12 @@ import Contacts from './Contacts/Contacts'
 
 export default [
   {
-    path: "/",
+    path: '/',
     exact: true,
     component: Home
-  }, {
-    path: "/contacts",
+  },
+  {
+    path: '/contacts',
     component: Contacts
   }
 ]

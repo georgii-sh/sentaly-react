@@ -1,5 +1,4 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
 import Helmet from 'react-helmet'
 import { renderRoutes } from 'react-router-config'
 
@@ -8,21 +7,17 @@ import Header from './Header/Header'
 import Footer from './Footer/Footer'
 import { Modal } from './shared'
 
-type Props = {
-}
-
-class App extends React.Component<Props> {
-
+class App extends React.Component {
   render() {
     return (
       <div>
         <Helmet
-          htmlAttributes={{ lang: "en", amp: undefined }}
+          htmlAttributes={{ lang: 'en', amp: undefined }}
           titleTemplate="%s - Sentaly technologies"
-          titleAttributes={{ itemprop: "name", lang: "en" }}
+          titleAttributes={{ itemprop: 'name', lang: 'en' }}
           meta={[
-            { name: "description", content: "Sentaly technologies website" },
-            { name: "viewport", content: "width=device-width, initial-scale=1" },
+            { name: 'description', content: 'Sentaly technologies website' },
+            { name: 'viewport', content: 'width=device-width, initial-scale=1' },
           ]}
           link={[
             { rel: 'icon', type: 'image/png', href: '/assets/icons/favicon-32x32.png', sizes: '32x32' },

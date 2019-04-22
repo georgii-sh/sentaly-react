@@ -13,7 +13,8 @@ type Props = {
   isLoading: boolean,
   isFormSent: boolean,
   error: string,
-  sendContactUsForm: Function
+  sendContactUsForm: Function,
+  setModal: Function
 }
 
 type State = {
@@ -34,8 +35,9 @@ class Contacts extends React.Component<Props, State> {
     message: ''
   }
 
-  componentWillUpdate(newProps) {
-    if (newProps.isFormSent !== this.props.isFormSent && newProps.isFormSent) {
+  componentWillReceiveProps(newProps: Props) {
+    const { isFormSent, error } = this.props
+    if (newProps.isFormSent !== isFormSent && newProps.isFormSent) {
       this.props.setModal('Success', 'Thank you for your message')
       this.setState({
         firstName: '',
@@ -46,7 +48,7 @@ class Contacts extends React.Component<Props, State> {
       })
     } 
 
-    if (newProps.error !== this.props.error && newProps.error) {
+    if (newProps.error !== error && newProps.error) {
       this.props.setModal('Error', newProps.error)
     } 
   }
@@ -60,10 +62,13 @@ class Contacts extends React.Component<Props, State> {
   }
   
   isSubmitDisabled() {
-    return !(this.state.firstName && this.state.email && this.state.message && this.state.validations.email)
+    const { firstName, email, message, validations } = this.state
+    return !(firstName && email && message && validations.email)
   }
 
   render() {
+    const { firstName, lastName, email, message, phone } = this.state
+    const { isLoading } = this.props
     return (
       <div className={[bs4.container, styles.contacts].join(' ')}>
         <Helmet title="Contact Us" />
@@ -72,19 +77,17 @@ class Contacts extends React.Component<Props, State> {
           Have a project idea or general inquiry? Please don’t hesitate to ask us - we will
           contact you as soon as possible.
         </div>
-
         <Form 
-          firstName={this.state.firstName}
-          lastName={this.state.lastName}
-          email={this.state.email}
-          phone={this.state.phone}
-          message={this.state.message}
-          isLoading={this.props.isLoading}
+          firstName={firstName}
+          lastName={lastName}
+          email={email}
+          phone={phone}
+          message={message}
+          isLoading={isLoading}
           onInputChange={this.onInputChange}
           onSubmit={this.submit}
           isSubmitDisabled={this.isSubmitDisabled()}
         />
-
       </div>
     )
   }

@@ -7,7 +7,8 @@
   ],
   "plugins": [
     "flowtype",
-    "prettier"
+    "prettier",
+    "json"
   ],
   "parser": "babel-eslint",
   "parserOptions": {
@@ -18,10 +19,15 @@
     }
   },
   "rules": {
+    "prettier/prettier": "off",
     "react/require-default-props": "off",
     "quotes": [
       "error",
-      "single"
+      "single",
+      {
+        "avoidEscape": true,
+        "allowTemplateLiterals": true
+      }
     ],
     "no-case-declarations": "off",
     "linebreak-style": 0,
@@ -40,7 +46,8 @@
       {
         "ignorePureComponents": true
       }
-    ]
+    ],
+    "react/destructuring-assignment": "warn"
   },
   "env": {
     "es6": true,

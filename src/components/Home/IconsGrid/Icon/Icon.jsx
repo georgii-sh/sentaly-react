@@ -14,13 +14,14 @@ type Props = {
 class Icon extends React.PureComponent<Props> {
 
   render() {
+    const { icon, title, text } = this.props
     return (
       <div className={[styles.item, bs4['mx-auto mb-5'], bs4['mb-lg-0'], bs4['mb-lg-3']].join(' ')}>
         <div className={[styles.item__icon, bs4['d-flex']].join(' ')}>
-          <i className={[bs4['m-auto'], this.props.icon].join(' ')} />
+          <i className={[bs4['m-auto'], icon].join(' ')} />
         </div>
-        <h3>{this.props.title}</h3>
-        <p className={[bs4.lead, bs4['mb-0']].join(' ')}>{this.props.text}</p>
+        <h3>{title}</h3>
+        <p className={[bs4.lead, bs4['mb-0']].join(' ')}>{text}</p>
       </div>
     )
   }

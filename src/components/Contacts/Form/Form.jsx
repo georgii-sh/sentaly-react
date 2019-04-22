@@ -1,7 +1,6 @@
 // @flow
 
 import React from 'react'
-import { Link } from 'react-router-dom'
 
 import { bs4, Input } from '../../shared'
 import styles from './Form.scss'
@@ -45,6 +44,8 @@ class Form extends React.PureComponent<Props, State> {
   }
 
   render() {
+    const { isfirstNameValid, isemailValid, ismessageValid } = this.state
+    const { firstName, lastName, email, phone, message, isLoading, isSubmitDisabled } = this.props
     return (
       <form className={styles.form}>
         <div className={[bs4.row, bs4['form-group']].join(' ')}>
@@ -54,8 +55,8 @@ class Form extends React.PureComponent<Props, State> {
               id="firstName"
               placeholder="First Name"
               isRequired
-              isInvalid={!this.state.isfirstNameValid}
-              value={this.props.firstName}
+              isInvalid={!isfirstNameValid}
+              value={firstName}
               onChange={this.onInputChange}
               onInputValidityChange={this.onInputValidityChange}
             />
@@ -65,7 +66,7 @@ class Form extends React.PureComponent<Props, State> {
               type="text"
               id="lastName"
               placeholder="Last Name"
-              value={this.props.lastName}
+              value={lastName}
               onChange={this.onInputChange}
             />
           </div>
@@ -76,9 +77,9 @@ class Form extends React.PureComponent<Props, State> {
               type="email"
               id="email"
               isRequired
-              isInvalid={!this.state.isemailValid}
+              isInvalid={!isemailValid}
               placeholder="Email Address"
-              value={this.props.email}
+              value={email}
               onChange={this.onInputChange}
               onInputValidityChange={this.onInputValidityChange}
             />
@@ -88,7 +89,7 @@ class Form extends React.PureComponent<Props, State> {
               type="text"
               id="phone"
               placeholder="Phone Number"
-              value={this.props.phone}
+              value={phone}
               onChange={this.onInputChange}
             />
           </div>
@@ -98,9 +99,9 @@ class Form extends React.PureComponent<Props, State> {
             type="textarea"
             id="message"
             isRequired
-            isInvalid={!this.state.ismessageValid}
+            isInvalid={!ismessageValid}
             placeholder="How can we help you?"
-            value={this.props.message}
+            value={message}
             onChange={this.onInputChange}
             onInputValidityChange={this.onInputValidityChange}
           />
@@ -109,11 +110,11 @@ class Form extends React.PureComponent<Props, State> {
           <button
             type="button"
             id="submitButton"
-            className={[bs4.btn, bs4['btn-success'], bs4['btn-lg'], this.props.isLoading ? styles.sending : ''].join(' ')}
+            className={[bs4.btn, bs4['btn-success'], bs4['btn-lg'], isLoading ? styles.sending : ''].join(' ')}
             onClick={this.submit}
-            disabled={this.props.isLoading || this.props.isSubmitDisabled}
+            disabled={isLoading || isSubmitDisabled}
           >
-            {this.props.isLoading ? 'Submiting...' : 'Submit'}
+            {isLoading ? 'Submiting...' : 'Submit'}
           </button>
         </div>
 

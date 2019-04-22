@@ -29,5 +29,6 @@ export default function serverRenderer({ clientStats, serverStats }) {
       helmet,
       preloadedState
     }))
+    next()
   }
 }

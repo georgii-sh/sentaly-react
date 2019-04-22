@@ -1,10 +1,9 @@
 // @flow
 
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import { bs4 } from '../'
+import bs4 from '../bs4'
 import { closeModal } from '../../../redux'
 
 import styles from './Modal.scss'
@@ -13,7 +12,6 @@ type Props = {
   title: string,
   content: string,
   isShown: string,
-  onClose: Function,
   closeModal: Function
 }
 
@@ -24,22 +22,23 @@ class Modal extends React.PureComponent<Props> {
   }
 
   render() {
+    const { isShown, title, content } = this.props
     return (
       <div 
-        className={[bs4.modal, this.props.isShown ? styles.visible : styles.hiden].join(' ')}
+        className={[bs4.modal, isShown ? styles.visible : styles.hiden].join(' ')}
         tabIndex={-1} 
         role="dialog"
       >
         <div className={bs4['modal-dialog']} role="document">
           <div className={bs4['modal-content']}>
             <div className={bs4['modal-header']}>
-              <h5 className={bs4['modal-title']}>{this.props.title}</h5>
+              <h5 className={bs4['modal-title']}>{title}</h5>
               <button type="button" className={bs4.close} data-dismiss="modal" aria-label="Close" onClick={this.close}>
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div className={bs4['modal-body']}>
-              <p>{this.props.content}</p>
+              <p>{content}</p>
             </div>
             <div className={bs4['modal-footer']}>
               <button type="button" className={[bs4.btn, bs4['btn-primary']].join(' ')} onClick={this.close}>

@@ -3,12 +3,11 @@ const express = require('express')
 const path = require('path')
 const compression = require('compression')
 const cors = require('cors')
+
 const app = express()
 
-const ClientStatsPath = path.join(__dirname, './public/stats.json')
-const ServerRendererPath = path.join(__dirname, './public/server.js')
-const ServerRenderer = require(ServerRendererPath).default
-const Stats = require(ClientStatsPath)
+const ServerRenderer = require('./public/server.js').default
+const Stats = require('./public/stats.json')
 
 app.use(compression())
 app.use(cors())
