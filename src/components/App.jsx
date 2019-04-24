@@ -7,6 +7,7 @@ import Header from './Header/Header'
 import Footer from './Footer/Footer'
 import { Modal } from './shared'
 
+
 class App extends React.Component {
   render() {
     return (
@@ -24,8 +25,7 @@ class App extends React.Component {
             { rel: 'icon', type: 'image/png', href: '/assets/icons/favicon-16x16.png', sizes: '16x16' },
             { rel: 'stylesheet', type: 'text/css', href: 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600' },
             { rel: 'stylesheet', type: 'text/css', href: '/assets/styles/_normalize.css' },
-            { rel: 'stylesheet', type: 'text/css', href: '/assets/styles/_simple-line-icons.css' },
-            { rel: 'stylesheet', type: 'text/css', href: '/assets/styles/main.css' }
+            { rel: 'stylesheet', type: 'text/css', href: '/assets/styles/_simple-line-icons.css' }
           ]}
         />
         <Header title="Sentaly technologies" />

@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react'
+import withStyles from 'isomorphic-style-loader/withStyles'
 
 import { bs4 } from '../../../../shared'
 import styles from './Icon.scss'
@@ -27,4 +28,4 @@ class Icon extends React.PureComponent<Props> {
   }
 }
 
-export default Icon
+export default withStyles(bs4, styles)(Icon)

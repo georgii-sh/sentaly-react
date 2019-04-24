@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react'
+import withStyles from 'isomorphic-style-loader/withStyles'
 
 import { bs4 } from '../../../shared'
 import styles from './IconsGrid.scss'
@@ -33,4 +34,4 @@ class IconsGrid extends React.PureComponent<{}> {
   }
 }
 
-export default IconsGrid
+export default withStyles(bs4, styles)(IconsGrid)
