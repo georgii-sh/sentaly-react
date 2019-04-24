@@ -5,6 +5,7 @@ export default ({ markup, helmet, preloadedState }) => {
 	${helmet.title.toString()}
 	${helmet.meta.toString()}
 	${helmet.link.toString()}
+	<!--STYLE-->
 	<script>
 		window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
 	</script>

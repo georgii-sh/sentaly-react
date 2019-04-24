@@ -1,6 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
-const environment = require('./config/environment-vars')
+const environment = require('../environment-vars')
 
 module.exports = [
   {
@@ -9,7 +9,7 @@ module.exports = [
     target: 'web',
     entry: './src/client.jsx',
     output: {
-      path: path.join(__dirname, 'public'),
+      path: path.join(__dirname, '../../public'),
       filename: 'client.js',
       publicPath: '/public/',
     },
@@ -49,7 +49,7 @@ module.exports = [
             {
               loader: 'sass-resources-loader',
               options: {
-                resources: path.join(__dirname, 'src/scss/variables.scss')
+                resources: path.join(__dirname, '../../src/scss/variables.scss')
               }
             }
           ]
@@ -68,7 +68,7 @@ module.exports = [
     target: 'node',
     entry: './src/server.jsx',
     output: {
-      path: path.join(__dirname, 'public'),
+      path: path.join(__dirname, '../../public'),
       filename: 'server.js',
       libraryTarget: 'commonjs2',
       publicPath: '/public/',
@@ -109,7 +109,7 @@ module.exports = [
             {
               loader: 'sass-resources-loader',
               options: {
-                resources: path.join(__dirname, 'src/scss/variables.scss')
+                resources: path.join(__dirname, '../../src/scss/variables.scss')
               }
             }
           ]
@@ -118,7 +118,8 @@ module.exports = [
     },
     plugins: [
       new webpack.DefinePlugin({
-        'process.env': environment
+        'process.env': environment,
+        'process.env.IS_SERVER_RENDERING': JSON.stringify(true)
       })
     ]
   },

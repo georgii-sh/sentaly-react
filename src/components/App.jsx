@@ -23,8 +23,8 @@ class App extends React.Component {
             { rel: 'icon', type: 'image/png', href: '/assets/icons/favicon-32x32.png', sizes: '32x32' },
             { rel: 'icon', type: 'image/png', href: '/assets/icons/favicon-16x16.png', sizes: '16x16' },
             { rel: 'stylesheet', type: 'text/css', href: 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600' },
-            { rel: 'stylesheet', type: 'text/css', href: '/assets/styles/normalize.css' },
-            { rel: 'stylesheet', type: 'text/css', href: '/assets/styles/simple-line-icons.css' },
+            { rel: 'stylesheet', type: 'text/css', href: '/assets/styles/_normalize.css' },
+            { rel: 'stylesheet', type: 'text/css', href: '/assets/styles/_simple-line-icons.css' },
             { rel: 'stylesheet', type: 'text/css', href: '/assets/styles/main.css' }
           ]}
         />
