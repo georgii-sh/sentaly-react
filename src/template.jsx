@@ -1,10 +1,11 @@
-export default ({ markup, helmet, preloadedState }) => {
+export default ({ markup, helmet, preloadedState, css }) => {
 	return `<!doctype html>
 <html ${helmet.htmlAttributes.toString()}>
 <head>
 	${helmet.title.toString()}
 	${helmet.meta.toString()}
 	${helmet.link.toString()}
+	<style>${Array.from(css).join('')}</style>
 	<script>
 		window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
 	</script>

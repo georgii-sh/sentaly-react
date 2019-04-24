@@ -12,14 +12,14 @@ describe('App', () => {
   })
 
   test('should contains Header component', () => {
-    expect(component.find('Header').length).toEqual(1)
+    expect(component.find('WithStyles(Header)').length).toEqual(1)
   })
 
   test('should contains Modal component', () => {
-    expect(component.find('Connect(Modal)').length).toEqual(1)
+    expect(component.find('WithStyles(Connect(Modal))').length).toEqual(1)
   })
 
   test('should contains Footer component', () => {
-    expect(component.find('Footer').length).toEqual(1)
+    expect(component.find('WithStyles(Footer)').length).toEqual(1)
   })
 })

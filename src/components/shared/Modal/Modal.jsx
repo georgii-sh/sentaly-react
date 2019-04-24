@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { connect } from 'react-redux'
+import withStyles from 'isomorphic-style-loader/withStyles'
 
 import bs4 from '../bs4'
 import { closeModal } from '../../../redux'
@@ -66,4 +67,4 @@ const mapDispatchToProps = (dispatch: Function) => ({
 
 export const UnwrappedModal = Modal
 
-export default connect(mapStateToProps, mapDispatchToProps)(Modal)
+export default withStyles(bs4, styles)(connect(mapStateToProps, mapDispatchToProps)(Modal))

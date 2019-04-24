@@ -3,14 +3,10 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import IconsGrid from './IconsGrid'
-
-const mockedData = {
-
-}
+import { UnwrappedIconsGrid as IconsGrid } from './IconsGrid'
 
 describe('IconsGrid Component', () => {
-  const component = shallow(<IconsGrid {...mockedData} />)
+  const component = shallow(<IconsGrid />)
 
   test('renders correctly', () => {
     expect(component).toMatchSnapshot()

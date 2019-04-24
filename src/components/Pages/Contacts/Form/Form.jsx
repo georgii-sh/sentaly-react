@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react'
+import withStyles from 'isomorphic-style-loader/withStyles'
 
 import { bs4, Input } from '../../../shared'
 import styles from './Form.scss'
@@ -116,4 +117,6 @@ class Form extends React.PureComponent<Props> {
   }
 }
 
-export default Form
+export const UnwrappedForm = Form
+
+export default withStyles(bs4, styles)(Form)

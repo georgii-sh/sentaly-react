@@ -7,7 +7,7 @@ const webpack = require('webpack')
 const webpackDevMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
 const webpackHotServerMiddleware = require('webpack-hot-server-middleware')
-const config = require('./webpack.development.config.js')
+const config = require('./config/webpack/dev.config')
 
 const compiler = webpack(config)
 

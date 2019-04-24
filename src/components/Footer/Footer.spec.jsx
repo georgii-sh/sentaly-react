@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { shallow } from 'enzyme'
-import Footer from './Footer'
+import { UnwrappedFooter as Footer } from './Footer'
 
 const scrollToSpy = jest.fn();
 global.scrollTo = scrollToSpy

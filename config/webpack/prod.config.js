@@ -1,12 +1,8 @@
 const path = require('path')
 const webpack = require('webpack')
-const WebpackCleanupPlugin = require('webpack-cleanup-plugin')
-const StatsPlugin = require('stats-webpack-plugin')
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
-const environment = require('./config/environment-vars')
+const environment = require('../environment-vars')
 
 module.exports = [
 	{
@@ -14,10 +10,10 @@ module.exports = [
 		name: 'client',
 		target: 'web',
     	entry: './src/client.jsx',
-		output: {
-      		path: path.join(__dirname, 'public'),
-			filename: 'client.js',
-			publicPath: '/public/',
+			output: {
+      	path: path.join(__dirname, '../../public'),
+				filename: 'client.js',
+				publicPath: '/public/',
 		},
 		resolve: {
 			extensions: ['.js', '.jsx']
@@ -37,9 +33,7 @@ module.exports = [
 				{
 					test: /\.scss$/,
 					use: [
-						{
-							loader: 'style-loader',
-						},
+						'isomorphic-style-loader',
 						{
 							loader: 'css-loader',
 							options: {
@@ -55,7 +49,7 @@ module.exports = [
 						{
 							loader: 'sass-resources-loader',
 							options: {
-								resources: path.join(__dirname, 'src/scss/variables.scss')
+								resources: path.join(__dirname, '../../src/scss/variables.scss')
 							}
 						}
 					]
@@ -82,7 +76,7 @@ module.exports = [
 		target: 'node',
 		entry: './src/server.jsx',
 		output: {
-      		path: path.join(__dirname, 'public'),
+			path: path.join(__dirname, '../../public'),
 			filename: 'server.js',
 			libraryTarget: 'commonjs2',
 			publicPath: '/public/',
@@ -105,13 +99,8 @@ module.exports = [
 				{
 					test: /\.scss$/,
           use: [
+						'isomorphic-style-loader',
 						{
-							loader: MiniCssExtractPlugin.loader,
-							options: {
-								publicPath: '/public/assets/'
-							}
-						},
-            {
               loader: 'css-loader',
               options: {
                 modules: true,
@@ -126,7 +115,7 @@ module.exports = [
 						{
 							loader: 'sass-resources-loader',
 							options: {
-								resources: path.join(__dirname, 'src/scss/variables.scss')
+								resources: path.join(__dirname, '../../src/scss/variables.scss')
 							}
 						}
           ]
@@ -135,19 +124,10 @@ module.exports = [
 		},
 		plugins: [
 			new webpack.DefinePlugin({
-				'process.env': environment
+				'process.env': environment,
+				'process.env.IS_SERVER_RENDERING': JSON.stringify(true)
 			}),
 			new CopyWebpackPlugin([{ from: 'assets', to: 'assets' }]),
-		  new MiniCssExtractPlugin({
-				filename: "assets/styles/[name].css",
-				chunkFilename: "[id].css"
-			}),
-			new StatsPlugin('stats.json', {
-				chunkModules: true,
-				modules: true,
-				chunks: true,
-				exclude: [/node_modules[\\\/]react/],
-			}),
 			new CompressionPlugin({
 				asset: '[path].gz[query]',
 				algorithm: 'gzip',

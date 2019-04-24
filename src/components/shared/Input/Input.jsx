@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react'
+import withStyles from 'isomorphic-style-loader/withStyles'
 
 import bs4 from '../bs4'
 import styles from './Input.scss'
@@ -16,7 +17,7 @@ type Props = {
   onInputValidityChange: Function,
 }
 
-class Contacts extends React.Component<Props> {
+class Input extends React.Component<Props> {
 
   onInputChange = (e: any) => {
     const { id, onChange } = this.props
@@ -67,4 +68,6 @@ class Contacts extends React.Component<Props> {
   }
 }
 
-export default Contacts
+export const UnwrappedInput = Input
+
+export default withStyles(bs4, styles)(Input)

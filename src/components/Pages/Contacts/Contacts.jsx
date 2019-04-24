@@ -3,6 +3,7 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
+import withStyles from 'isomorphic-style-loader/withStyles'
 
 import { bs4 } from '../../shared'
 import styles from './Contacts.scss'
@@ -128,4 +129,4 @@ const mapDispatchToProps = (dispatch: Function) => ({
 
 export const UnwrappedContacts = Contacts
 
-export default connect(mapStateToProps, mapDispatchToProps)(Contacts)
+export default withStyles(bs4, styles)(connect(mapStateToProps, mapDispatchToProps)(Contacts))

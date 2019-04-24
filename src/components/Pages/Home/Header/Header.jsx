@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react'
+import withStyles from 'isomorphic-style-loader/withStyles'
 
 import { bs4 } from '../../../shared'
 import styles from './Header.scss'
@@ -31,4 +32,6 @@ class Header extends React.PureComponent<Props> {
   }
 }
 
-export default Header
+export const UnwrappedHeader = Header
+
+export default withStyles(bs4, styles)(Header)

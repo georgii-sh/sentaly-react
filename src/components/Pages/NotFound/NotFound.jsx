@@ -3,12 +3,13 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
+import withStyles from 'isomorphic-style-loader/withStyles'
 
 import { bs4, Status } from '../../shared'
 import styles from './NotFound.scss'
 import text from './data'
 
-export default function NotFound() {
+function NotFound() {
   return (
     <Status code={404}>
       <div className={[bs4.container, styles.page].join(' ')}>
@@ -20,3 +21,7 @@ export default function NotFound() {
     </Status>
   )
 }
+
+export const UnwrappedNotFound = NotFound
+
+export default withStyles(bs4, styles)(NotFound)
