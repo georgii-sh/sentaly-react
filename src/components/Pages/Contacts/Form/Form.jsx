@@ -117,4 +117,6 @@ class Form extends React.PureComponent<Props> {
   }
 }
 
+export const UnwrappedForm = Form
+
 export default withStyles(bs4, styles)(Form)

@@ -3,7 +3,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import Showcases from './Showcases'
+import { UnwrappedShowcases as Showcases } from './Showcases'
 
 const mockedData = {
 

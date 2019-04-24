@@ -68,4 +68,6 @@ class Input extends React.Component<Props> {
   }
 }
 
+export const UnwrappedInput = Input
+
 export default withStyles(bs4, styles)(Input)

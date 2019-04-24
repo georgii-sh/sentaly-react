@@ -12,7 +12,7 @@
     "start": "node server.js",
     "test": "jest --verbose --colors --coverage -u",
     "flow": "./node_modules/.bin/flow",
-    "lint": "eslint '{src,config}/**/*.{js,jsx,json}' server.js dev.js package.json",
+    "lint": "eslint 'src/**/*.{js,jsx,json}' server.js dev.js package.json",
     "test:all": "npm run lint && npm run flow && npm run test"
   },
   "keywords": [],

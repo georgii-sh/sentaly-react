@@ -34,4 +34,6 @@ class IconsGrid extends React.PureComponent<{}> {
   }
 }
 
+export const UnwrappedIconsGrid = IconsGrid
+
 export default withStyles(bs4, styles)(IconsGrid)

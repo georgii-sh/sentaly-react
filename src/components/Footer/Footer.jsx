@@ -40,4 +40,6 @@ class Footer extends React.PureComponent<{}> {
   }
 }
 
+export const UnwrappedFooter = Footer
+
 export default withStyles(bs4, styles)(Footer)

@@ -32,4 +32,6 @@ class Header extends React.PureComponent<Props> {
   }
 }
 
+export const UnwrappedHeader = Header
+
 export default withStyles(bs4, styles)(Header)

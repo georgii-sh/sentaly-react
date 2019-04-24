@@ -4,7 +4,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import sinon from 'sinon'
 
-import Input from './Input'
+import { UnwrappedInput as Input } from './Input'
 
 const mockedData = {
   id: 'test_id',

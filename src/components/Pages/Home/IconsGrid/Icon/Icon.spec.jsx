@@ -3,7 +3,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import Icon from './Icon'
+import { UnwrappedIcon as Icon } from './Icon'
 
 const mockedData = {
   icon: 'icon-test',

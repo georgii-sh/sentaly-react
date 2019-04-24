@@ -22,4 +22,6 @@ function NotFound() {
   )
 }
 
+export const UnwrappedNotFound = NotFound
+
 export default withStyles(bs4, styles)(NotFound)

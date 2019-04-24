@@ -23,4 +23,6 @@ function Header({ title }: Props) {
   )
 }
 
+export const UnwrappedHeader = Header
+
 export default withStyles(bs4, styles)(Header)

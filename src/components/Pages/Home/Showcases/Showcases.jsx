@@ -20,4 +20,6 @@ function Showcases() {
   )
 }
 
+export const UnwrappedShowcases = Showcases
+
 export default withStyles(bs4, styles)(Showcases)

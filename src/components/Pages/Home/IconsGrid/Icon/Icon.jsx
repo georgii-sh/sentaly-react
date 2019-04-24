@@ -28,4 +28,6 @@ class Icon extends React.PureComponent<Props> {
   }
 }
 
+export const UnwrappedIcon = Icon
+
 export default withStyles(bs4, styles)(Icon)

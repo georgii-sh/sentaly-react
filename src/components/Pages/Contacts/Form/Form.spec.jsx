@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { shallow } from 'enzyme'
-import Form from './Form'
+import { UnwrappedForm as Form } from './Form'
 
 const mockedData = {
   firstName: 'firstName',
