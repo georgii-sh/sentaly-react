@@ -56,4 +56,21 @@ describe('Contacts Component', () => {
     expect(mockedData.sendContactUsForm).toHaveBeenCalledTimes(1)
   })
 
+  test('onInputValidityChange should set correct state', () => {
+    component.instance().onInputValidityChange('email', false)
+    expect(component.state()).toEqual({
+      email: '',
+      firstName: '',
+      lastName: '',
+      message: '',
+      phone: '',
+      testId: 'testValue',
+      validation: {
+        email: false,
+        firstName: true,
+        message: true,
+      }
+    })
+  })
+
 })

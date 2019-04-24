@@ -14,29 +14,23 @@ type Props = {
   isLoading: boolean,
   isSubmitDisabled: boolean,
   onInputChange: Function,
-  onSubmit: Function
-}
-
-type State = {
-  isfirstNameValid: boolean,
-  isemailValid: boolean,
-  ismessageValid: boolean
-}
-
-class Form extends React.PureComponent<Props, State> {
-
-  state = {
-    isfirstNameValid: true,
-    isemailValid: true,
-    ismessageValid: true 
+  onInputValidityChange: Function,
+  onSubmit: Function,
+  validation: {
+    firstName: boolean,
+    email: boolean,
+    message: boolean
   }
+}
 
+
+class Form extends React.PureComponent<Props> {
   onInputChange = (id: string, value: string) => {
     this.props.onInputChange(id, value)
   }
 
   onInputValidityChange = (id: string, isValid: boolean) => {
-    this.setState({ [`is${id}Valid`]: isValid })
+    this.props.onInputValidityChange(id, isValid)
   }
 
   submit = () => {
@@ -44,8 +38,7 @@ class Form extends React.PureComponent<Props, State> {
   }
 
   render() {
-    const { isfirstNameValid, isemailValid, ismessageValid } = this.state
-    const { firstName, lastName, email, phone, message, isLoading, isSubmitDisabled } = this.props
+    const { firstName, lastName, email, phone, message, isLoading, isSubmitDisabled, validation } = this.props
     return (
       <form className={styles.form}>
         <div className={[bs4.row, bs4['form-group']].join(' ')}>
@@ -55,7 +48,7 @@ class Form extends React.PureComponent<Props, State> {
               id="firstName"
               placeholder="First Name"
               isRequired
-              isInvalid={!isfirstNameValid}
+              isInvalid={!validation.firstName}
               value={firstName}
               onChange={this.onInputChange}
               onInputValidityChange={this.onInputValidityChange}
@@ -77,7 +70,7 @@ class Form extends React.PureComponent<Props, State> {
               type="email"
               id="email"
               isRequired
-              isInvalid={!isemailValid}
+              isInvalid={!validation.email}
               placeholder="Email Address"
               value={email}
               onChange={this.onInputChange}
@@ -99,7 +92,7 @@ class Form extends React.PureComponent<Props, State> {
             type="textarea"
             id="message"
             isRequired
-            isInvalid={!ismessageValid}
+            isInvalid={!validation.message}
             placeholder="How can we help you?"
             value={message}
             onChange={this.onInputChange}

@@ -13,7 +13,13 @@ const mockedData = {
   isLoading: false,
   isSubmitDisabled: false,
   onInputChange: jest.fn(),
-  onSubmit: jest.fn()
+  onSubmit: jest.fn(),
+  onInputValidityChange: jest.fn(),
+  validation: {
+    firstName: true,
+    email: true,
+    message: true
+  }
 }
 
 describe('Form', () => {
@@ -46,13 +52,10 @@ describe('Form', () => {
     expect(mockedData.onSubmit).toHaveBeenCalledTimes(1)
   })
 
-  test('onInputValidityChange should set correct state', () => {
+  test('onInputValidityChange should call onInputValidityChange from props', () => {
     component.instance().onInputValidityChange('email', false)
-    expect(component.state()).toEqual({
-      isemailValid: false,
-      isfirstNameValid: true,
-      ismessageValid: true
-    })
+    expect(mockedData.onInputValidityChange).toHaveBeenCalledTimes(1)
+    expect(mockedData.onInputValidityChange).toHaveBeenCalledWith('email', false)
   })
 
   test('submitButton should show correct loading state if isLoading is false', () => {

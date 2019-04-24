@@ -22,7 +22,12 @@ type State = {
   lastName: string,
   phone: string,
   email: string,
-  message: string
+  message: string,
+  validation: {
+    firstName: boolean,
+    email: boolean,
+    message: boolean
+  }
 }
 
 class Contacts extends React.Component<Props, State> {
@@ -32,7 +37,12 @@ class Contacts extends React.Component<Props, State> {
     lastName: '',
     phone: '',
     email: '',
-    message: ''
+    message: '',
+    validation: {
+      firstName: true,
+      email: true, 
+      message: true
+    }
   }
 
   componentWillReceiveProps(newProps: Props) {
@@ -57,17 +67,23 @@ class Contacts extends React.Component<Props, State> {
     this.setState({ [id]: value })
   }
 
+  onInputValidityChange = (id: string, isValid: boolean) => {
+    const { validation } = this.state
+    const newValidation = Object.assign({}, validation, { [id]: isValid })
+    this.setState({ validation: newValidation })
+  }
+
   submit = () => {
     this.props.sendContactUsForm(this.state)
   }
   
   isSubmitDisabled() {
-    const { firstName, email, message } = this.state
-    return !(firstName && email && message)
+    const { firstName, email, message, validation } = this.state
+    return !(firstName && email && message && validation.firstName && validation.email && validation.message )
   }
 
   render() {
-    const { firstName, lastName, email, message, phone } = this.state
+    const { firstName, lastName, email, message, phone, validation } = this.state
     const { isLoading } = this.props
     return (
       <div className={[bs4.container, styles.contacts].join(' ')}>
@@ -87,6 +103,8 @@ class Contacts extends React.Component<Props, State> {
           onInputChange={this.onInputChange}
           onSubmit={this.submit}
           isSubmitDisabled={this.isSubmitDisabled()}
+          onInputValidityChange={this.onInputValidityChange}
+          validation={validation}
         />
       </div>
     )
