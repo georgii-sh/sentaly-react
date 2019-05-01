@@ -1,6 +1,6 @@
 # sentaly-react
 
-React website with server site rendering.
+React website with server side rendering.
 
 ## Development
 
